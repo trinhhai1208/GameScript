@@ -10,6 +10,7 @@ public class ShipControl : MonoBehaviour
     public float xLimit = 7f;
     public float reloadTime = 0.5f;
     float elapsedTime = 0f;
+    public SoundManager soundManager;
 
     void Update()
     {
@@ -21,6 +22,7 @@ public class ShipControl : MonoBehaviour
         transform.position = position;
         if(Input.GetButtonDown("Jump") && elapsedTime > reloadTime)
         {
+            soundManager.playSFX(soundManager.bullet);
             Vector3 spawnPos = transform.position;
             spawnPos += new Vector3(0, 1.2f, 0);
             Instantiate(bulletPrefab, spawnPos, Quaternion.identity);
