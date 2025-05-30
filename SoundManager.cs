@@ -6,8 +6,10 @@ public class SoundManager : MonoBehaviour
 {
     public AudioSource sound;
     public AudioSource sfx;
+    public AudioSource epl;
     public AudioClip background;
     public AudioClip bullet;
+    public AudioClip explosion;
 
     void Start()
     {
@@ -18,5 +20,10 @@ public class SoundManager : MonoBehaviour
     public void playSFX(AudioClip clip)
     {
         sfx.PlayOneShot(clip);
+    }
+
+    public void playExpl(Audio clip)
+    {
+        epl.PlayOneShot(clip);
     }
 }

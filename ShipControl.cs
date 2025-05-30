@@ -16,7 +16,8 @@ public class ShipControl : MonoBehaviour
     {
         elapsedTime += Time.deltaTime;
         float xInput = Input.GetAxis("Horizontal");
-        transform.Translate(xInput * speed * Time.deltaTime, 0f, 0f);
+        float yInput = Input.GetAxis("Vertical");
+        transform.Translate(xInput * speed * Time.deltaTime, yInput * speed *Time.deltaTime, 0f);
         Vector3 position = transform.position;
         position.x = Mathf.Clamp(position.x, -xLimit, xLimit);
         transform.position = position;
@@ -33,5 +34,6 @@ public class ShipControl : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         gameManager.PlayerDied();
+        soundManager.playExpl(soundManager.explosion);
     }
 }
